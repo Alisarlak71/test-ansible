@@ -1,0 +1,14 @@
+- name: relay stream server
+  hosts: windows_host
+  tasks:
+    - name: Move files from E:\
+      win_shell: |
+        cd E:\farscada-develop\backend
+        git pull
+    - name: Stop Docker Compose
+      win_shell: |
+        docker-compose down
+
+    - name: Start Docker Compose
+      win_shell: |
+        docker-compose up -d
